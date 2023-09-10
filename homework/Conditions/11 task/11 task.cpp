@@ -1,0 +1,22 @@
+#include <iostream>
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	std::cout << " Введите число грибов\n";
+	int k;
+	std::cin >> k;
+	int n = k;
+	while (n > 100) {
+		n=n-100;
+	}
+	
+	if (n  >= 5 && n <= 20) std::cout << "мы нашли " << k << " грибов в лесу"; // от 5 до 20
+	else
+		if (n % 10 == 1) std::cout << "мы нашли " << k << " гриб в лесу"; //
+		else
+			if (n % 10 >= 2 && n % 10 <= 4) std::cout << "мы нашли " << k << " гриба в лесу"; //
+			else
+				if (n % 10 >= 5 && n % 10 <= 9 || n % 10 == 0) std::cout << "мы нашли " << k << " грибов в лесу"; //
+}
+
