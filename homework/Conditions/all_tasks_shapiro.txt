@@ -1,0 +1,268 @@
+
+
+#include <iostream>
+
+/*1. Даны два числа. Если первое число больше второго,
+то вывести yes, иначе поменять значения этих переменных местами и вывести их на экран.*/
+int main()
+{
+	int a = 4;
+	int b = 7;
+	if (a > b)
+	{
+		std::cout << "yes\n";
+	}
+	else
+	{
+		int temp;
+		temp = a;
+		a = b;
+		b = temp;
+		std::cout << "a=" << a << " b=" << b;
+	}
+	return 0;
+}
+
+#include <iostream>
+/* 
+2. Даны три числа. Найдите наибольшее число из них.  */
+int main()
+{
+	int a = 3;
+	int b = 5;
+	int c = 8;
+	std::cout << "starting order " << a <<" " << b <<" " << c << "\n";
+	int x;
+	if (a > b) x = a;
+	else x = b;
+	if (c > x) x = c;
+	std::cout << x;
+	
+	return 0;
+}
+#include <iostream>
+/* 3. Даны три числа. Найдите те два из них, сумма которых наибольшая.  */
+int main()
+{
+	int a = 10;
+	int b = 5;
+	int c = 14;
+	int m1;
+	int m2;
+	if (a > b)
+	{
+		m1 = a; m2 = b;
+	}
+	else {
+		m1 = b; m2 = a;
+	}
+
+	if (c > m2) {
+		if (c > m1) {
+			m2 = m1;
+			m1 = c;
+		
+		}
+		else {
+			m2 = c;
+		}
+	}
+	std::cout << "Sum =" << m1 + m2;
+	
+	return 0;
+}
+
+#include <iostream>
+/* 
+4. Пользователь вводит четыре числа. Найдите наибольшее четное число среди них. Если оно не существует, выведите фразу "not found" */
+int main()
+{
+    int a, b, c, d;
+    std::cin >> a >> b >> c >> d;
+    int n1, n2, n3, n4;
+    // Нахождение четных чисел
+    if (a % 2 == 0) n1 = a;
+    else n1 = 0;
+    if (b % 2 == 0) n2 = b;
+    else n2 = 0;
+    if (c % 2 == 0) n3 = c;
+    else n3 = 0;
+    if (d % 2 == 0) n4 = d;
+    else n4 = 0;
+    // Нахождение большего четного
+    int x;
+    if (n1 > n2) x = n1;
+    else x = n2;
+    if (n3 > x) x = n3;
+    if (n4 > x) x = n4;
+    // Вывод результата
+    if (x != 0) std::cout << x;
+    else std::cout << "Not found";
+    return 0;
+}
+
+#include <iostream>
+/* 5. Даны три числа. Написать "yes", если среди них есть одинаковые.  */
+int main()
+{
+	int a = 10;
+	int b = 5;
+	int c = 5;
+	if (a == b || a == c || b == c) std::cout << "yes";
+	
+	return 0;
+}
+#include <iostream>
+/*6. Даны три числа. Написать "yes", если можно взять какие-то два из них и в сумме получить третье  */
+int main()
+{
+	int a = 3;
+	int b = 2;
+	int c = 5;
+	if (a + b == c || a + c == b || b + c == a) std::cout << "yes";
+
+}
+#include <iostream>
+/* 7. Дано четыре числа, если первые два числа больше 5, 
+третье число делится на 6, четвертое число не делится на 3,
+то вывести yes, иначе no. */
+int main()
+{
+	int a = 6;
+	int b = 7;
+	int c = 12;
+	int d = 10;
+	if (a > 5 && b > 5 && c %6==0 && d %3!= 0) std::cout << "yes";
+	else std::cout << "no";
+
+	return 0;
+}
+#include <iostream>
+int main()
+/* 8. Дан номер дня недели. Выведите название дня недели.  */
+{
+	int a = 3;
+	switch (a) {
+	case 1:
+		std::cout << "Monday";
+		break;
+	case 2:
+		std::cout << "Tuesday";
+		break;
+	case 3:
+		std::cout << "Wednesday";
+		break;
+	case 4:
+		std::cout << "Thursday";
+		break;
+	case 5:
+		std::cout << "Friday";
+		break;
+	case 6:
+		std::cout << "Saturday";
+		break;
+	case 7:
+		std::cout << "Sunday";
+		break;
+	}
+	return 0;
+}
+#include <iostream>
+
+int main()
+/* 9. Дан номер месяца. Выведите пору года (осень, зима, лето, весна). */
+{
+	int a = 3;
+	switch (a) {
+	case 1:
+		std::cout << "Winter";
+		break;
+	case 2:
+		std::cout << "Winter";
+	case 3:
+		std::cout << "Spring";
+		break;
+	case 4:
+		std::cout << "Spring";
+		break;
+	case 5:
+		std::cout << "Spring";
+		break;
+	case 6:
+		std::cout << "Summer";
+		break;
+	case 7:
+		std::cout << "Summer";
+		break;
+	case 8:
+		std::cout << "Summer";
+		break;
+	case 9:
+		std::cout << "Autumn";
+		break;
+	case 10:
+		std::cout << "Autumn";
+		break;
+	case 11:
+		std::cout << "Autumn";
+		break;
+	case 12:
+		std::cout << "Winter";
+		break;
+	}
+	return 0;
+}
+#include <iostream>
+
+int main()
+/* 10. Написать программу-калькулятор для логических операций. 
+Пользователь вводит два значения типа bool и выбирает  действие.
+Вывести на экран результат. */
+{
+	std::cout << "Insert two bool values\n";
+	bool a;
+	bool b;
+	std::cin >> a >> b;
+	std::cout << "Select operation: 1 - and, 2 - or, 3 - xor\n";
+	int x;
+	std::cin >> x;
+	switch (x)  {
+	case 1:
+		std::cout << (a && b);
+		break;
+	case 2:
+		std::cout << (a || b);
+		break;
+	case 3:
+		std::cout << (a ^ b);
+		break;
+	}
+	return 0;
+}
+
+#include <iostream>
+
+int main()
+/* 11.  Для натурального числа К напечатать фразу "мы нашли К грибов в лесу", 
+согласовав окончание слова "гриб" с числом К.*/
+{
+	setlocale(LC_ALL, "Russian");
+	std::cout << " Введите число грибов\n";
+	int k;
+	std::cin >> k;
+	int n = k;
+	while (n > 100) {
+		n=n%100;
+	}
+	
+	if (n  >= 5 && n <= 20) std::cout << "мы нашли " << k << " грибов в лесу"; // от 5 до 20
+	else
+		if (n % 10 == 1) std::cout << "мы нашли " << k << " гриб в лесу"; //
+		else
+			if (n % 10 >= 2 && n % 10 <= 4) std::cout << "мы нашли " << k << " гриба в лесу"; //
+			else
+				if (n % 10 >= 5 && n % 10 <= 9 || n % 10 == 0) std::cout << "мы нашли " << k << " грибов в лесу"; //
+	return 0;
+}
+
+

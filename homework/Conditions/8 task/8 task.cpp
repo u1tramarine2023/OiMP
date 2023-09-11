@@ -1,5 +1,6 @@
 #include <iostream>
 int main()
+/* 8. Дан номер дня недели. Выведите название дня недели.  */
 {
 	int a = 3;
 	switch (a) {
