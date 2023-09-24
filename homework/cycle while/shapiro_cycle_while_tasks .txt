@@ -1,0 +1,140 @@
+#include <iostream>
+/*Дано натуральное число n. Определите,
+является ли оно степенью числа 2, и выведите слово YES, 
+если является и слово NO, если не является.  */
+int main()
+{
+	int n;
+	
+		while (true) {
+
+			std::cin >> n;
+			while (n % 2 == 0 && n != 0) 
+				n = n / 2; //делим число на 2 макс. количество раз
+			if (n == 1)
+				std::cout << "yes\n";
+			else
+				std::cout << "no\n";
+		}
+	return 0;
+}
+
+#include <iostream>
+//Найти все несократимые, простые дроби, знаменатель которых меньше заданного числа.  
+int main()
+{
+	int n, chis, znam;
+
+	while (true) {
+
+		std::cin >> n;
+		chis = 1;
+		while (chis < n - 1) {
+			znam = chis + 1;
+			while (znam < n) {
+				if (znam % chis != 0 || chis == 1) //
+					std::cout << chis << "/" << znam << "\n";
+				znam++;
+			}
+			chis++;
+		}
+
+	}
+	return 0;
+}
+#include <iostream>
+//Пользователь вводит номер месяца, необходимо вывести время года. 
+int main()
+{
+	int month;
+	std::cout << "Enter the month number\n";
+	std::cin >> month;
+
+	switch (month)
+	{
+	case 1: case 2:case 12:
+		std::cout << "Winter";
+		break;
+	case 3: case 4:case 5:
+		std::cout << "Spring";
+		break;
+	case 6: case 7:case 8:
+		std::cout << "Summer";
+		break;
+	case 9: case 10:case 11:
+		std::cout << "Autumn";
+		break;
+	}
+	return 0;
+}
+#include <iostream>
+// Написать программу, которая вычисляет дату предыдущего дня. 
+int main()
+{
+	enum {
+		jan = 1,
+		feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
+	};
+
+	int monthDuration{};
+	int day, month, year;
+	std::cout << "Input date (format: day month year): ";
+	std::cin >> day >> month >> year;
+
+	if (day == 1) {
+
+		if (month == 1) {
+			year--;
+			month = 12;
+			day = 31;
+		}
+		else {
+			month--;
+			switch (month)
+			{
+			case jan: case mar: case may: case jul: case aug: case oct: case dec:
+				monthDuration = 31; break;
+			case apr: case jun: case sep: case nov:
+				monthDuration = 30; break;
+			case feb:
+				monthDuration = (year % 4 == 0 and year % 100 != 0 or year % 400 == 0) ? 29 : 28;
+				break;
+			default:
+				std::cout << "Wrong month\n";
+				break;
+			}
+			day = monthDuration;
+		}
+	}
+	else {
+		day--;
+	}
+	std::cout << day << " " << month << " " << year;
+
+	return 0;
+
+}
+#include <iostream>
+// По данному натуральному числу n найдите сумму чисел 1+1/1!+1/2!+1/3!+...+1/n!.
+int main()
+{
+	int a, i, n;
+	double result = 1;
+	i = 1; //счетчик действий
+	std::cin >> n;
+	while (i <= n) {
+		double factorial = 1.;
+		int k = 1; //счетчик для факториала
+		while (k <= i) { //факториал для каждого члена суммы
+			factorial /= k; // т.к. 1/(1*2*к)=1/2/к
+			k++;
+		}
+		result += factorial;
+		i++;
+	}
+	std::cout << result << "\n";
+	return 0; //Стремиться к 2.71828
+}
+
+
+

@@ -1,18 +1,23 @@
 #include <iostream> 
+#include<iomanip> 
+double Sqrt(double);//прототип функции (объявление функции) 
 
-int main() //точка входа в программу на с++ 
+int main()
 {
-    //цикл 
-    //найти сумму цифр заданного числа 
-    int n, sum = 0;
-    std::cout << "Enter n\n";
-    std::cin >> n;
-
-    while (n != 0)
-    {
-        sum += n % 10;
-        n /= 10;
-    }
-    std::cout << "Summa= " << sum << std::endl;
-    return 0;
+    double a, result;
+    std::cout << "Input a\n";
+    std::cin >> a;
+    result = Sqrt(a);
+    std::cout << std::fixed << std::setprecision(12) << " sqtr(" << a << ")= " << result << std::endl;
+}
+double Sqrt(double a) //реализация функции (определение функции) 
+{
+    const double eps = 0.00000000001;
+    double xn, xn1;
+    xn = xn1 = a;
+    do {
+        xn = xn1;
+        xn1 = (xn + a / xn) / 2;
+    } while (abs(xn - xn1) > eps);
+    return xn1;
 }
