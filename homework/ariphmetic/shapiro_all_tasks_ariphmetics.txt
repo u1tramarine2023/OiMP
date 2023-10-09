@@ -1,0 +1,243 @@
+#include <iostream>
+/*Для заданного N найти все меньшие его автоморфные числа
+(автоморфным называется число, совпадающее с младшими цифрами своего
+квадрата)
+*/
+int sqr(int  i) { //возведение в квадрат
+    i=i* i;
+    return i;
+    }
+int power(int a,int b) { //возведение в степень
+    int result=1;
+    for (int i = 1; i <=b; i++)
+    {
+        result = result * a;
+    }
+    return result;
+}
+bool automorph(int n, int square_n) {
+    int i=1; //степень
+  while (true)
+    {
+      int d = power (10, i);
+      if (d > square_n) break;
+      int ost = square_n % d;
+      if (ost == n) return true;
+      i++;
+
+    }
+    return false;
+}
+int main()
+{
+    int n;
+    std::cout << "Input n \n";
+    std::cin >> n;
+    int c=1;
+    while (c < n) {
+       bool result= automorph(c, sqr(c));
+        if (result) std::cout << c <<" "<< sqr(c) <<"\n";
+        c++;
+    }
+}
+
+#include <iostream>
+/* Для заданного N найти все меньшие его совершенные числа
+(совершенным называется число, равное сумме всех своих делителей, не
+равных самому числу)*/
+void deliteli(int n) {
+	int i=1;
+	while (i < n) { 
+		int sum = 0;
+		int d = 1;
+		while (d < i) {
+			if (i % d == 0) sum += d;
+			d++;
+		}
+		if (i == sum) std::cout << i << " ";
+		i++;
+	}
+}
+
+int main()
+{
+	int n;
+	std::cin >> n;
+	deliteli(n) ;
+}
+#include <iostream>
+/* Найти натуральное число из интервала от a до b с максимальной суммой
+делителей.*/
+void max_sum_del(int a,int b) {
+	int i = a;
+	int max_sum = 1;
+	int max_num;
+	while (i <= b) {// перебор чисел от а до б
+		int sum = 0;
+		int d = 1;
+		while (d < i) {// нахождение суммы делителей
+			if (i % d == 0) sum+= d;
+			d++;
+		}
+		if (max_sum < sum) max_sum = sum , max_num = i;;
+		i++;
+	}
+	std::cout << max_num;
+}
+
+
+int main()
+{
+	int a;
+	int b;
+	std::cin >> a >> b;
+	max_sum_del(a, b);
+    
+}
+
+#include <iostream>
+/* Определить, между какими двумя последующими степенями двойки
+расположено заданное число*/
+int power(int a, int b) { //возведение в степень
+    int result = 1;
+    for (int i = 1; i <= b; i++)
+    {
+        result = result * a;
+    }
+    return result;
+}
+void btw_stepen_founder(int n) {
+    int i = 0;
+    while (n > power(2, i))
+        i++;
+    std::cout << "Number is between 2^" << i - 1 << " and 2^" << i;
+}
+
+int main()
+{
+    int n;
+    std::cin >> n;
+    btw_stepen_founder(n);
+}
+#include <iostream>
+/* Для заданного N найти все меньшие его числа Армстронга (n-значное
+число называется числом Армстронга, если оно равно сумме n-х степеней
+своих цифр, например, 153=1^3+5^3+3^3) */
+int power(int a, int b) { //возведение в степень
+	int result = 1;
+	for (int i = 1; i <= b; i++)
+	{
+		result = result * a;
+	}
+	return result;
+}
+int num_of_digits(int n) {
+	int i = 1;
+	while (n >= 10) {
+		n = n / 10;
+		i++;
+	}
+	return(i);
+}
+void armstrong(int n) {
+	int i = 1;
+	int ost;
+	int sum = 0;
+	int num_dig = num_of_digits(n);
+	int k = n;
+	while (k >= 1) {
+		ost = k % 10;
+		sum += power(ost, num_dig);
+		i++;
+		k = (k - ost) / 10;
+	}
+	if (n == sum) std::cout << n << " ";
+}
+int main()
+{
+	int n;
+	std::cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		armstrong(i);
+	}
+
+}
+#include <iostream>
+/*.Найти наименьшее число с одинаковыми десятичными цифрами, кратное
+натуральному числу К типа int.Например для К = 37 наименьшее число 111.*/
+void find_min(int k) {
+    int od = 1; //1, 11,111 ,...
+    while (od<=111111111) {
+        for (int i = 1; i <= 9; i++)
+        {
+            int result = od * i;
+            if (result % k == 0) {
+                std::cout << result;
+                return;
+            }
+        }
+        od = od * 10 + 1;
+    } 
+    std::cout << "not found";
+}
+int main()
+{
+    int k;
+    std::cin >> k;
+    find_min(k);
+}
+
+#include <iostream>
+/*Пользователь вводит дату своего рождения и текущую дату. Посчитать
+количество прожитых дней.*/
+int month_days(int month_num, int year) {
+	enum {
+		jan = 1,
+		feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
+	};
+	int add_days = 0;
+	switch (month_num)
+	{
+	case jan:  add_days = 1; break;
+	case mar: add_days = 2; break;
+	case apr: add_days = 2; break;
+	case may:case jun: add_days = 3; break;
+
+	case jul:add_days = 4; break;
+	case aug: case sep: add_days = 5; break;
+	case oct: case nov: add_days = 6; break;
+
+	case feb:
+		add_days = (year % 4 == 0 and year % 100 != 0 or year % 400 == 0) ? 0 : -1;
+		break;
+	}
+	return add_days;
+}
+int num_of_leap_years(int year) {
+	int result = 0;
+	for (int i=0; i <year; i++)
+	{
+		result+= (i % 4 == 0 and i % 100 != 0 or i % 400 == 0) ? 1 : 0;
+	}
+	return result;
+}
+int days(int day, int month, int year) {
+	int day_dur = day-1;
+	int month_dur = (month - 1) * 30 + month_days(month - 1, year);
+	int year_dur = (year-1) * 365 + num_of_leap_years(year);
+	return day_dur + month_dur + year_dur;
+}
+
+int main()
+{
+
+	int day1, month1, year1;
+	std::cout << "Input your birthday (format: day month year): ";
+	std::cin >> day1 >> month1 >> year1;
+	int day2, month2, year2;
+	std::cout << "Input current date (format: day month year): ";
+	std::cin >> day2 >> month2 >> year2;
+	std::cout << days(day2, month2, year2) - days(day1, month1, year1);
+
+}

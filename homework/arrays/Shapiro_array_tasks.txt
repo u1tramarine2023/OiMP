@@ -1,0 +1,461 @@
+1. #include <iostream>
+/* Дан массив целых чисел, в котором все числа кроме одного встречаются
+четное количество раз, одно число встречается нечетное количество раз.
+Найти это число.*/
+int main()
+{
+	const int size = 7;
+	int numbers[size]{ 2,2,3,4, 4, 3, 7};
+	for (int i = 0; i < size; i++)
+	{
+		int num_i = numbers[i];
+		int sum_num = 1;
+		for (int j = 0; j < size; j++)
+		{
+			if (num_i == numbers[j] && i!=j) sum_num++;
+		}
+		if (sum_num % 2 !=0) {
+			std::cout << numbers[i]; break;
+		}
+	}
+}
+2.  #include <iostream>
+/* Из последовательности целых чисел выбрать три числа, произведение
+которых максимально.*/
+bool check(int* numbers, int position) {
+	for (int i = 0; i < 3; i++)
+	{
+		if (numbers[i] == position) return true;
+	}
+	return false;
+}
+int main()
+{
+	const int size = 7;
+	int numbers[size]{ 5,8,4, 9, 3, 9, 9 };
+	int max_num[3]{ -1,-1,-1 };
+	int max;
+	int proizvedenie = 1;
+	for (int k = 0; k < 3; k++)
+	{
+			for (int i = 0; i < size; i++) {
+			if (check(max_num, i)) {
+				continue;
+			}
+				bool big = true;
+				for (int j = i + 1; j < size; j++)
+				{
+					if (check(max_num, j)) {
+						continue;
+					}
+					if (numbers[j] > numbers[i])
+					{
+						big = false;
+						break;
+					}
+
+				}
+			
+				if (big) {
+					max_num[k] = i; 
+					break;
+				}
+		}
+
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		proizvedenie *= numbers[max_num[i]];
+	}
+	std::cout << proizvedenie;
+}
+
+3. #include <iostream>
+#include<ctime> 
+/*Найти сумму и произведение двух многочленов, заданных массивами
+своих коэффициентов.*/
+void Allocate(int**, size_t);
+
+int main()
+{
+	//задаем первый массив
+	int size1;
+	std::cout << "Input size of first \n";
+	std::cin >> size1;
+	srand(time(0));
+	int* arr1 = nullptr;
+	Allocate(&arr1, size1);
+	for (size_t i = 0; i < size1; i++)
+	{
+		arr1[i] = rand() % 10;
+		std::cout << arr1[i] << " ";
+	}
+	std::cout << std::endl;
+
+	
+	//задаем второй массив
+	int size2;
+	std::cout << "Input size of second\n";
+	std::cin >> size2;
+	srand(time(0));
+	int* arr2 = nullptr;
+	Allocate(&arr2, size2);
+	for (size_t i = 0; i < size2; i++)
+	{
+		arr2[i] = rand() % 10;
+		std::cout << arr2[i] << " ";
+	}
+	std::cout << std::endl;
+	
+	int size = size2 > size1 ? size2:size1;
+	//разность в количестве коэф-ов
+	int shift = std::abs(size1 - size2);
+	int* result_sum_arr = nullptr;
+	Allocate(&result_sum_arr, size);
+	int* result_multi_arr = nullptr;
+	int mul_size = size1 + size2 - 1;
+	Allocate(&result_multi_arr, mul_size);
+	for (int i = 0; i < size; i++)
+	{
+		result_sum_arr[i] = 0;
+
+		if (size1 == size) {
+			result_sum_arr[i] += arr1[i];
+			if ((i - shift) >= 0) {
+				result_sum_arr[i] += arr2[i - shift];
+			}
+		}
+		else {
+			if ((i - shift) >= 0) {
+				result_sum_arr[i] += arr1[i - shift];
+			}
+			result_sum_arr[i] += arr2[i];
+		}
+		std::cout << result_sum_arr[i] << " ";
+
+	}
+	std::cout << std::endl;
+	for (size_t i = 0; i < mul_size; i++)
+	{
+		result_multi_arr[i] = 0;
+	}
+	for (size_t i = 0; i < size1; i++)
+	{
+		int power1 = size1 - i;
+		for (size_t k = 0; k < size2; k++)
+		{
+			int power2 = size2 - k;
+			result_multi_arr[mul_size - power1 - power2+1] += arr1[i] * arr2[k];
+		}
+	}
+	for (size_t i = 0; i < mul_size; i++)
+	{
+		std::cout << result_multi_arr[i] << " ";
+	}
+}
+void Allocate(int** arr, size_t size) {
+	*arr = new int[size];
+}
+4. #include <iostream> 
+#include<ctime> 
+/* Реализовать функцию для обработки массива целых чисел. Функция
+находит минимальный элемент массива и сортирует все элементы левее его
+по убыванию, а правее его – по возрастанию. Функция возвращает индекс
+минимального элемента.*/
+void select_sort(int* arr, int size) {
+	//нахождение минимального
+	int min = arr[0];
+	int index_min = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] < min) {
+			min = arr[i];
+			index_min = i;
+		}
+	}
+	//сортировка от начала до элемента
+	for (int i = 0; i < index_min; i++)
+	{
+		for (size_t j = index_min - 1; j > i; j--)
+		{
+			if (arr[j] > arr[j - 1])
+				std::swap(arr[j], arr[j - 1]);
+		}
+	}
+	//сортировка с элемента до конца
+	for (int i = index_min + 1; i < size - 1; i++)
+	{
+		for (size_t j = size - 1; j > index_min; j--)
+		{
+			if (arr[j] < arr[j - 1])
+				std::swap(arr[j], arr[j - 1]);
+		}
+	}
+
+}
+//выделение памяти для динамического массива 
+void Allocate(int**, size_t);
+int main()
+{
+	int size;
+	std::cout << "Input size\n";
+	std::cin >> size;
+	srand(time(0));
+	int* arr = nullptr;
+	Allocate(&arr, size);
+	//заполнение массива случайными числами 
+	for (size_t i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 100;
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+	//выполение функции
+	select_sort(arr, size);
+	//вывод 
+	for (size_t i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	};
+}
+void Allocate(int** arr, size_t size) {
+	*arr = new int[size];
+}
+
+5. #include <iostream>
+#include<ctime> 
+/* Добавить к некоторой последовательности A=(ai), i=1..n, n<=100,
+наименьшее число элементов, чтобы получить арифметическую прогрессию (
+напр 22 1 36 -> 1 8 15 22 29 36)*/
+void Allocate(int**, size_t);
+void Bubblesort(int* arr, size_t size)
+{
+	for (int i = size - 1; i > 0; i--)
+	{
+		for (size_t j = 0; j < i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+				std::swap(arr[j], arr[j + 1]);
+		}
+	}
+}
+int NOD(int a, int b) {
+	if (a < b) {
+		std::swap(a, b);
+	}
+	while (a % b != 0) {
+		a = a % b;
+		std::swap(a, b);
+	}
+	return b;
+}
+
+int main()
+{
+	int size;
+	std::cout << "Input size\n";
+	std::cin >> size;
+	srand(time(0));
+	int* arr = nullptr;
+	Allocate(&arr, size);
+
+	//заполнение массива случайными числами 
+	for (size_t i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 99 +1;
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+	Bubblesort(arr, size);
+	int a;
+	int* diff = nullptr;
+	Allocate(&diff, size);
+	//нахождение разности между числами
+	for (int i = 0; i < size; i++)
+	{
+		 diff[i] = arr[i + 1] - arr[i];
+	}
+	int first_nod=NOD(diff[0], diff[1]);
+	
+	int final_nod = first_nod;
+	for (int i = 0; i < size-1; i++)
+	{
+		final_nod =NOD(diff[i], final_nod);
+
+	}
+	std::cout << "final NOD=" << final_nod << "\n";
+	while (arr[0] <= arr[size-1])
+
+	{
+		std::cout << arr[0] << " ";
+		arr[0] += final_nod;
+
+	}
+}
+void Allocate(int** arr, size_t size) {
+	*arr = new int[size];
+}
+
+
+6. #include <iostream>
+#include<ctime>
+/* Написать функцию, которая находит минимальный элемент массива и
+возвращает его. С использованием этой функции реализовать сортировку
+выбором. Использовать динамический массив.*/
+void Allocate(int**, size_t);
+//функция нахождение индекса минимального
+int find_min(int* arr, int size) {
+	int min = arr[0];
+	int index_min = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] < min) {
+			min = arr[i];
+			index_min = i;
+		}
+	}
+	return index_min;
+}
+
+void sort_vyborom(int* arr, int size) {
+	for (int i = 0; i < size; i++)
+	{
+		int index_min = find_min(arr, size-i);
+		std::swap(arr[size - i-1], arr[index_min]);
+	}
+}
+int main()   
+{
+	int size;
+	std::cout << "Input size\n";
+	std::cin >> size;
+	srand(time(0));
+	int* arr = nullptr;
+	Allocate(&arr, size);
+	//заполнение массива случайными числами 
+	for (size_t i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 100;
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+	sort_vyborom(arr, size);
+	for (size_t i = 0; i < size; i++)
+	{
+		std::cout << arr[size - i-1] << " ";
+	}
+}
+void Allocate(int** arr, size_t size) {
+	*arr = new int[size];
+}
+7. #include <iostream>
+#include <ctime>
+/* Написать функцию, которая производит двоичный поиск места
+размещения нового элемента в упорядоченном массиве и возвращает место
+включения нового элемента. С помощью данной функции реализовать
+сортировку вставками*/
+// отображение массива
+void PrintArray(int* array, int size)
+{
+    for (int i = 0; i < size; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+//создаёт динамический массив
+int* InitArray(int* array, int size)
+{
+    array = new int[size];
+
+    for (int i = 0; i < size; i++) {
+        array[i] = rand() % 50 + 1;
+    }
+    return array;
+}
+
+//бинарный поиск
+int BinarySearch(int* array, int start, int finish, int num)
+{
+    if (num >= array[finish])
+        return finish + 1;
+
+    int pos = (finish + start) / 2;
+
+    if (start == finish)
+        return pos;
+
+    else {
+        if (array[pos] > num) {
+            BinarySearch(array, start, pos - 1, num);
+        }
+        else {
+            BinarySearch(array, pos + 1, finish, num);
+        }
+    }
+}
+
+//сортировка массива с помощью бинарного поиска
+void sortArray(int* array, int size)
+{
+    int newPos;
+    for (int i = 1; i < size; i++) {
+        newPos = BinarySearch(array, 0, i - 1, array[i]);
+        for (int j = i; j > newPos; j--) {
+            std::swap(array[j], array[j - 1]);
+        }
+    }
+}
+
+int main()
+{
+    srand(time(0));
+
+    int* array = nullptr;
+    int size = 10;
+    array = InitArray(array, size);
+    PrintArray(array, size);
+    sortArray(array, size);
+    PrintArray(array, size);
+
+    delete[] array;
+    return 0;
+}
+8. #include <iostream>
+#include<ctime> 
+/* Написать программу, которая содержит функцию, принимающую в
+качестве аргумента, два массива (А и В) и размеры массивов. Функция
+проверяет, является ли массив В подмножеством (подстрокой) массива А и
+возвращает указатель на начало найденного фрагмента, если элемента нет,
+возвращает 0*/
+void Allocate(int**, size_t);
+int* check_podmnoj(int* arrA, int* arrB, int sizeA, int sizeB)
+{
+    int* ptr;
+    for (int i = 0; i < sizeA; i++)
+    {
+        int j = i, k = 0;
+        while (j < sizeA && k < sizeB && arrB[k] == arrA[j])
+        {
+            j++;
+            k++;
+        }
+        if (k == sizeB) {
+           return  ptr=&arrA[i];
+        }
+    }
+    return 0; 
+}
+int main(){
+
+    int sizeA = 7;
+    int arrA[7]{ 0, 0, 0, 1, 2, 3 ,4 };
+    int sizeB = 3;
+    int arrB[3]{ 2,3,4 };
+    int* printptr = check_podmnoj(arrA, arrB, sizeA, sizeB);
+    std::cout << "Podmnojestvo s " << printptr;
+}
+
+void Allocate(int** arr, size_t size) {
+    *arr = new int[size];
+}

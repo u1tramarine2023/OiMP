@@ -1,23 +1,20 @@
 #include <iostream> 
-#include<iomanip> 
-double Sqrt(double);//прототип функции (объявление функции) 
-
+#include<ctime> 
+void Allocate(int**, size_t);
 int main()
 {
-    double a, result;
-    std::cout << "Input a\n";
-    std::cin >> a;
-    result = Sqrt(a);
-    std::cout << std::fixed << std::setprecision(12) << " sqtr(" << a << ")= " << result << std::endl;
+	int* arr = nullptr;
+	int size = 4;
+	srand(time(0));
+	Allocate(&arr, size);
+	int sum = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		std::cin >> arr[i];
+		sum += arr[i];
+	}
+	std::cout << sum;
 }
-double Sqrt(double a) //реализация функции (определение функции) 
-{
-    const double eps = 0.00000000001;
-    double xn, xn1;
-    xn = xn1 = a;
-    do {
-        xn = xn1;
-        xn1 = (xn + a / xn) / 2;
-    } while (abs(xn - xn1) > eps);
-    return xn1;
+void Allocate(int** arr, size_t size) {
+	*arr = new int[size];
 }
