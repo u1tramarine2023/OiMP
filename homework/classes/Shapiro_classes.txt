@@ -1,0 +1,154 @@
+1.////////////////////////////////////////
+#include <iostream>
+int NOD(int a, int b) {
+    if (a < b) {
+        std::swap(a, b);
+    }
+    while (a % b != 0) {
+        a = a % b;
+        std::swap(a, b);
+    }
+    return b;
+}
+class Rational
+    {
+    public:
+        Rational(int ,int);//конструктор с параметрами
+        Rational(const Rational& r);//конструктор копий
+
+    int denominator;
+    int numerator;
+    const Rational operator+(const Rational &r) const;
+    const Rational operator*(const Rational &r) const;
+    const Rational operator/(const Rational &r) const;
+    bool  operator==(const Rational& r) const;
+    bool  operator<(const Rational& r) const;
+    bool  operator>(const Rational& r) const;
+private:
+    void reduce();
+};
+Rational::Rational(const Rational& r){
+    numerator=r.numerator;
+    denominator=r.denominator;
+}
+
+void Rational::reduce() {
+    if(NOD(numerator, denominator)==0)
+        return;
+    {
+            numerator /= NOD(numerator, denominator);
+            denominator/=NOD(numerator, denominator);
+    }
+}
+Rational::Rational(int r_numerator, int r_denominator){
+    numerator=r_numerator;
+    denominator=r_denominator;
+}
+const Rational Rational::operator+(const Rational& r) const {
+    Rational sum{numerator*r.denominator+r.numerator+denominator,denominator*r.denominator};
+    sum.reduce();
+    return sum;
+}
+const Rational Rational::operator*(const Rational& r) const {
+    Rational multi{numerator*r.numerator, denominator*r.denominator};
+    multi.reduce();
+    return multi;
+}
+const Rational Rational::operator/(const Rational& r) const {
+    Rational div{numerator * r.denominator, denominator*r.numerator};
+    div.reduce();
+    return div;
+}
+
+bool  Rational::operator==(const Rational& r) const {
+    Rational r1{numerator, denominator};
+    Rational r2{r.numerator, r.denominator};
+    r1.reduce();
+    r2.reduce();
+    return numerator==r.numerator&&denominator==r.denominator;
+}
+bool  Rational::operator<(const Rational& r) const {
+    Rational r1{r.numerator, r.denominator};
+    Rational r2{r.numerator, r.denominator};
+    r1.reduce();
+    r2.reduce();
+    Rational chr1{r1.numerator*r2.denominator, r1.denominator*r2.denominator};
+    Rational chr2{r2.numerator*r1.denominator, r2.denominator*r1.denominator};
+    return chr1.numerator<chr2.numerator;
+}
+bool  Rational::operator>(const Rational& r) const {
+    Rational r1{numerator, denominator};
+    Rational r2{r.numerator, r.denominator};
+    r1.reduce();
+    r2.reduce();
+    Rational chr1{r1.numerator*r2.denominator, r1.denominator*r2.denominator};
+    Rational chr2{r2.numerator*r1.denominator, r2.denominator*r1.denominator};
+    return chr1.numerator>chr2.numerator;
+}
+
+std::ostream& operator<<(std::ostream&out, const Rational&r)
+{
+    if (r.denominator == 1 or r.numerator == 0) {
+        out << r.numerator;
+        return out;
+    }
+
+    out << r.numerator << "/" << r.denominator;
+    return out;
+}
+int main() {
+Rational r1(3,4);
+Rational r2(5,7);
+Rational r3=r1+r2;
+ std::cout << r1<<(r1<r2?"<":">")<<r2;
+std::cout << r3;
+}
+2.////////////////////////////////////////
+#include <iostream>
+#include <string>
+#include <vector>
+class Train{
+public:
+    std::string destination;
+    int number;
+    bool is_express;
+    Train(std::string t_destination, int t_number, bool t_is_express){
+     destination=t_destination;
+     number=t_number;
+     is_express=t_is_express;
+    };
+
+
+   friend  std::ostream& operator<<(std::ostream& out, const Train& r){
+        out <<r.number<<"\t" << r.destination<<"\t" << (r.is_express? "Express":"Non express");
+        return out;
+    }
+
+};
+int main() {
+    std::string dest;
+    std::cout << "Enter destination: ";
+    std::cin >> dest;
+    //collection of trains
+    std::vector <Train> trains;
+    std::vector<std::string> destinations {"Minsk", "Hrodna", "Brest", "Mahilyow", "Vitebsk", "Babruysk","Baranavichy", "Pinsk", "Orsha", "Navapolatsk", "Homyel", "Mozyr", "Salihorsk", "Lida", "Maladzyechna", "Slutsk", "Svetlahorsk", "Novopolotsk", "Molodechno", "Rechytsa"};
+    for (int i = 1; i < 1000; ++i)
+    {   Train tr{destinations[rand()%destinations.size()], i, rand()%2==1};
+        trains.push_back(tr);
+        /*std::cout << tr<<"\n";*/
+
+    }
+    //all to one destination
+    for (int i = 0; i < trains.size(); ++i) {
+        if(trains[i].destination==dest)
+            std::cout << trains[i]<<"\n";
+
+    }
+    //only express
+    for (int i = 0; i < trains.size(); ++i) {
+        if(trains[i].destination==dest && trains[i].is_express)
+            std::cout << trains[i]<<"\n";
+
+    }
+
+}

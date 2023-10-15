@@ -1,0 +1,3 @@
+/mnt/d/Documents/university/1 course/oimp/homework/classes/Trains/cmake-build-debug/CMakeFiles/Trains.dir
+/mnt/d/Documents/university/1 course/oimp/homework/classes/Trains/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/d/Documents/university/1 course/oimp/homework/classes/Trains/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,200 @@
+1       Mahilyow        Non express
+2       Novopolotsk     Express
+3       Lida    Express
+4       Baranavichy     Non express
+5       Navapolatsk     Express
+6       Brest   Express
+7       Homyel  Express
+8       Mahilyow        Non express
+9       Minsk   Non express
+10      Salihorsk       Non express
+11      Mozyr   Non express
+12      Pinsk   Express
+13      Brest   Non express
+14      Brest   Express
+15      Pinsk   Express
+16      Navapolatsk     Non express
+17      Brest   Non express
+18      Navapolatsk     Express
+19      Lida    Non express
+20      Mozyr   Non express
+21      Navapolatsk     Express
+22      Hrodna  Express
+23      Vitebsk Express
+24      Molodechno      Non express
+25      Slutsk  Non express
+26      Lida    Non express
+27      Mozyr   Non express
+28      Svetlahorsk     Express
+29      Brest   Non express
+30      Svetlahorsk     Express
+31      Babruysk        Express
+32      Vitebsk Express
+33      Svetlahorsk     Express
+34      Baranavichy     Express
+35      Lida    Express
+36      Vitebsk Express
+37      Brest   Express
+38      Maladzyechna    Express
+39      Maladzyechna    Non express
+40      Mahilyow        Non express
+41      Pinsk   Non express
+42      Svetlahorsk     Non express
+43      Orsha   Non express
+44      Mahilyow        Express
+45      Maladzyechna    Express
+46      Salihorsk       Non express
+47      Svetlahorsk     Non express
+48      Rechytsa        Non express
+49      Baranavichy     Non express
+50      Maladzyechna    Express
+51      Slutsk  Non express
+52      Maladzyechna    Non express
+53      Pinsk   Express
+54      Novopolotsk     Non express
+55      Novopolotsk     Non express
+56      Salihorsk       Non express
+57      Hrodna  Non express
+58      Baranavichy     Express
+59      Babruysk        Express
+60      Vitebsk Express
+61      Minsk   Express
+62      Mozyr   Express
+63      Novopolotsk     Express
+64      Hrodna  Express
+65      Navapolatsk     Express
+66      Pinsk   Non express
+67      Novopolotsk     Express
+68      Baranavichy     Express
+69      Baranavichy     Express
+70      Rechytsa        Non express
+71      Orsha   Express
+72      Salihorsk       Express
+73      Mahilyow        Express
+74      Homyel  Non express
+75      Orsha   Express
+76      Minsk   Express
+77      Svetlahorsk     Express
+78      Molodechno      Express
+79      Baranavichy     Express
+80      Hrodna  Express
+81      Rechytsa        Non express
+82      Vitebsk Non express
+83      Hrodna  Non express
+84      Lida    Non express
+85      Maladzyechna    Non express
+86      Vitebsk Non express
+87      Pinsk   Non express
+88      Mahilyow        Express
+89      Pinsk   Express
+90      Rechytsa        Non express
+91      Salihorsk       Express
+92      Novopolotsk     Non express
+93      Slutsk  Express
+94      Maladzyechna    Express
+95      Molodechno      Express
+96      Navapolatsk     Express
+97      Slutsk  Express
+98      Molodechno      Non express
+99      Mahilyow        Express
+100     Orsha   Express
+101     Svetlahorsk     Non express
+102     Mahilyow        Express
+103     Lida    Non express
+104     Baranavichy     Non express
+105     Vitebsk Non express
+106     Orsha   Non express
+107     Navapolatsk     Express
+108     Novopolotsk     Non express
+109     Vitebsk Express
+110     Homyel  Express
+111     Homyel  Express
+112     Salihorsk       Express
+113     Vitebsk Non express
+114     Babruysk        Express
+115     Maladzyechna    Non express
+116     Navapolatsk     Non express
+117     Brest   Non express
+118     Novopolotsk     Express
+119     Slutsk  Non express
+120     Orsha   Express
+121     Brest   Non express
+122     Rechytsa        Express
+123     Baranavichy     Non express
+124     Minsk   Non express
+125     Mozyr   Non express
+126     Babruysk        Express
+127     Hrodna  Non express
+128     Molodechno      Express
+129     Minsk   Non express
+130     Vitebsk Non express
+131     Brest   Express
+132     Orsha   Non express
+133     Brest   Non express
+134     Vitebsk Express
+135     Brest   Non express
+136     Minsk   Non express
+137     Salihorsk       Express
+138     Rechytsa        Non express
+139     Orsha   Express
+140     Lida    Express
+141     Hrodna  Non express
+142     Lida    Non express
+143     Minsk   Express
+144     Rechytsa        Express
+145     Rechytsa        Non express
+146     Rechytsa        Express
+147     Lida    Non express
+148     Homyel  Express
+149     Baranavichy     Non express
+150     Vitebsk Non express
+151     Homyel  Non express
+152     Svetlahorsk     Non express
+153     Svetlahorsk     Express
+154     Babruysk        Non express
+155     Rechytsa        Non express
+156     Pinsk   Non express
+157     Orsha   Non express
+158     Rechytsa        Express
+159     Svetlahorsk     Non express
+160     Brest   Express
+161     Baranavichy     Express
+162     Lida    Non express
+163     Hrodna  Express
+164     Rechytsa        Express
+165     Hrodna  Non express
+166     Rechytsa        Express
+167     Minsk   Express
+168     Babruysk        Non express
+169     Pinsk   Non express
+170     Vitebsk Non express
+171     Minsk   Non express
+172     Brest   Express
+173     Svetlahorsk     Express
+174     Homyel  Non express
+175     Salihorsk       Non express
+176     Salihorsk       Non express
+177     Babruysk        Express
+178     Brest   Express
+179     Minsk   Non express
+180     Molodechno      Express
+181     Molodechno      Non express
+182     Vitebsk Non express
+183     Navapolatsk     Express
+184     Rechytsa        Non express
+185     Salihorsk       Express
+186     Maladzyechna    Non express
+187     Rechytsa        Express
+188     Lida    Non express
+189     Homyel  Express
+190     Minsk   Non express
+191     Rechytsa        Non express
+192     Lida    Express
+193     Hrodna  Express
+194     Vitebsk Express
+195     Hrodna  Non express
+196     Baranavichy     Express
+197     Vitebsk Non express
+198     Brest   Non express
+199     Vitebsk Express
+200     Brest   Non express
