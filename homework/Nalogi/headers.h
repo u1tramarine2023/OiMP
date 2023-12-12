@@ -1,0 +1,12 @@
+#pragma once
+#include <algorithm>
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <iterator>
+#include <sstream>
+#include <string>
+#include <vector>
+#include "income.h"
+#include "incomeTypes.h"
+#include "taxes.h"

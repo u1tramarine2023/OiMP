@@ -1,0 +1,3 @@
+D:/Documents/university/1 course/oimp/homework/Nalogi/cmake-build-debug/CMakeFiles/Nalogi.dir
+D:/Documents/university/1 course/oimp/homework/Nalogi/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Documents/university/1 course/oimp/homework/Nalogi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
